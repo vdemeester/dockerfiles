@@ -11,7 +11,7 @@ The idea is to use volume to be able to backup a folder using
 obnam. It can be used to backup locally (at least folder to folder) or
 with sftp.
 
-1. To backup locally, we will mount ``/obnam/source`` and
+* To backup locally, we will mount ``/obnam/source`` and
    ``/obname/destination`` to the right host folder. Let's mount the
    source as *read-only* to be sure it does not get messed up.
 
@@ -22,7 +22,7 @@ $ docker run -ti --rm \
   vdemeester/obnam
 ```
 
-2. To backup using ``sftp``, we will need to pass an argument to the
+* To backup using ``sftp``, we will need to pass an argument to the
    image, and probably the ``$HOME/.ssh`` folder to be able to use ssh keys.
 
 ```bash
