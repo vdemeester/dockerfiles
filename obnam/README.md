@@ -31,3 +31,19 @@ $ docker run -ti --rm \
   -v /folder/to/backup:/obnam/source:ro \
   vdemeester/obnam sftp://backup.host/backup/destination
 ```
+
+Note that if you bind a file to ``/obnam/config`` it will use it and
+pass it with ``--config`` to ``obnam``.
+
+For reference this is what I use to backup my root directory (I'm
+actually doing something more complex with btrfs snapshot but that's
+another story).
+
+```bash
+$ docker run -ti --user=root --rm \
+  -v ~/.ssh/id_rsa:/root/.ssh/id_rsa:ro \
+  -v ~/.ssh/known_hosts:/root/.ssh/known_hosts:ro \
+  -v /:/obnam/source:ro \
+  -v ~/documents/backups/hokkaido.root.conf:/obnam/config:ro \
+  vdemeester/obnam
+```
