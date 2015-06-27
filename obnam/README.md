@@ -1,6 +1,7 @@
 # Obnam docker image
 
-This image contains the obnam tools to make backup.
+This image contains the obnam tools to make backup. It is available on
+the Docker hub : [vdemeester/obnam](https://registry.hub.docker.com/u/vdemeester/obnam/).
 
 By default, it will backup ``/obnam/source`` to
 ``/obname/destination``.
@@ -32,8 +33,10 @@ $ docker run -ti --rm \
   vdemeester/obnam sftp://backup.host/backup/destination
 ```
 
-Note that if you bind a file to ``/obnam/config`` it will use it and
+* Note that if you bind a file to ``/obnam/config`` it will use it and
 pass it with ``--config`` to ``obnam``.
+
+# Real-world example
 
 For reference this is what I use to backup my root directory (I'm
 actually doing something more complex with btrfs snapshot but that's
