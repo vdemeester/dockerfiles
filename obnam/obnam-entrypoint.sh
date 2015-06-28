@@ -1,9 +1,9 @@
 #!/bin/sh
 # vdemeester/obnam entrypoint
 
-DESTINATION="/obnam/destination"
-SOURCE="/obnam/source"
-CONFIG="/obnam/config"
+test -z "$DESTINATION" && DESTINATION="/obnam/destination"
+test -z "$SOURCE" && SOURCE="/obnam/source"
+test -z "$CONFIG" && CONFIG="/obnam/config"
 
 OBNAM_OPTS=""
 
