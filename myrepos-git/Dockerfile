@@ -1,6 +1,6 @@
 ## -*- docker-image-name: "vdemeester/myrepos-git" -*-
 # A docker image with myrepos, git, mercurial & co to be used
-FROM alpine:3.1
+FROM alpine:3.2
 MAINTAINER Vincent Demeester <vincent@sbr.pm>
 
 ENV HUB_VERSION 2.2.1
