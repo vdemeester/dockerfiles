@@ -11,7 +11,7 @@
 #        -e PULSE_COOKIE=/run/pulse/cookie \
 #        -v /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket \
 #        -v $HOME/.spotify/config:/home/spotify/.config/spotify \
-#        -v $HOME/.spotify/cache:/home/spotify/spotify \
+#        -v $HOME/.spotify/cache:/home/spotify/cache \
 #        --name spotify \
 #        vdemeester/spotify
 
