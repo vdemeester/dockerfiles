@@ -24,12 +24,15 @@ RUN apk add --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/
 	&& touch /var/lib/mpd/tag_cache \
 	&& chmod 0777 -R /var/lib/mpd \
 	&& chown -R mpd /var/lib/mpd
+	
 
 ENV HOME /home/mpd
 COPY mpd.conf /etc/mpd.conf
 COPY mpd.sh /usr/local/bin/mpd.sh
 
 RUN chmod +x /usr/local/bin/mpd.sh
+
+RUN echo hello
 
 WORKDIR $HOME
 USER mpd
