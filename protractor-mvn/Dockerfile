@@ -7,7 +7,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ENV MAVEN_VERSION 3.3.3
 ENV MAVEN_HOME /usr/share/maven
 ENV PATH "$PATH:$MAVEN_HOME/bin"
-  
+
 # install maven
 RUN curl -fsSL http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar xzf - -C /usr/share \
     && mv /usr/share/apache-maven-$MAVEN_VERSION /usr/share/maven \
@@ -23,6 +23,13 @@ RUN echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' >> /
     apt-get install -y git && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
+
+ENV NPM_CONFIG_LOGLEVEL info
+ENV NODE_VERSION 5.1.0
+
+RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" \
+  && tar -xzf "node-v$NODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1 \
+  && rm "node-v$NODE_VERSION-linux-x64.tar.gz"
 
 # Protractor test project needs to be mounted at /project
 # VOLUME ["/project"]
