@@ -20,7 +20,7 @@ RUN echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' >> /
     apt-get update && \
     echo oracle-java${JAVA_VERSION}-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
     apt-get install -y --force-yes --no-install-recommends oracle-java${JAVA_VERSION}-installer oracle-java${JAVA_VERSION}-set-default && \
-    apt-get install -y git && \
+    apt-get install -y git optipng libjpeg-progs gifsicle && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
