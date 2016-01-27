@@ -31,7 +31,8 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
   && tar -xzf "node-v$NODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1 \
   && rm "node-v$NODE_VERSION-linux-x64.tar.gz" \
   && npm install -g bower \
-  && npm install -g grunt-cli
+  && npm install -g grunt-cli \
+  && npm install -g gulp
 
 # Protractor test project needs to be mounted at /project
 # VOLUME ["/project"]
