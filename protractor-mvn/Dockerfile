@@ -1,6 +1,11 @@
 FROM caltha/protractor
 MAINTAINER vincent@sbr.pm
 
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8 
+
 ENV JAVA_VERSION 8
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
  
