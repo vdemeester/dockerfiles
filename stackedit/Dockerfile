@@ -7,10 +7,12 @@ RUN apk add --no-cache curl && \
     curl -o v${STACKEDIT_VERSION}.tar.gz -sSL https://github.com/benweet/stackedit/archive/v${STACKEDIT_VERSION}.tar.gz && \
     tar -xzf v${STACKEDIT_VERSION}.tar.gz && \
     rm v${STACKEDIT_VERSION}.tar.gz && \
-    cd stackedit-${STACKEDIT_VERSION} && \
+    mv stackedit-${STACKEDIT_VERSION} stackedit && \
+    cd stackedit && \
     npm install && \
     apk del curl
 
+WORKDIR /stackedit
 
 EXPOSE 3000
 
