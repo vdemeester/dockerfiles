@@ -21,10 +21,10 @@ RUN echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' >> /
             libgconf-2-4 \
             libexif12 \
             chromium \
-            npm \
             supervisor \
             netcat-traditional \
             curl \
+            wget \
             libfreetype6 \
             libfontconfig \
             bzip2 \
@@ -48,6 +48,18 @@ RUN curl -fsSL http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binar
 
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
+
+ENV NPM_CONFIG_LOGLEVEL info
+ENV NODE_VERSION 5.1.0
+
+# Install nodejs
+RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" \
+&& tar -xzf "node-v$NODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1 \
+&& rm "node-v$NODE_VERSION-linux-x64.tar.gz" \
+&& npm install -g bower \
+&& npm install -g grunt-cli \
+&& npm install -g gulp
+
 RUN npm install -g protractor
 
 # Install Selenium and Chrome driver
@@ -56,17 +68,6 @@ RUN webdriver-manager update
 # Add a non-privileged user for running Protrator
 RUN adduser --home /project --uid 1000 \
   --disabled-login --disabled-password --gecos node node
-
-ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 5.1.0
-
-# Install nodejs
-RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.gz" \
-  && tar -xzf "node-v$NODE_VERSION-linux-x64.tar.gz" -C /usr/local --strip-components=1 \
-  && rm "node-v$NODE_VERSION-linux-x64.tar.gz" \
-  && npm install -g bower \
-  && npm install -g grunt-cli \
-  && npm install -g gulp
 
 # Install phantomjs
 ENV PHANTOMJS_VERSION 1.9.8
